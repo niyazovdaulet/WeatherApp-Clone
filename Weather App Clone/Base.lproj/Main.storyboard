@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21701"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="Cursor___iPhone_Weather_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bgI-h7-dXc">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="searchBar">
+                                <rect key="frame" x="0.0" y="59" width="343" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="searchBar-delegate"/>
+                                </connections>
+                            </searchBar>
+                            
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="locationButton">
+                                <rect key="frame" x="343" y="72" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="location-width"/>
+                                    <constraint firstAttribute="height" constant="30" id="location-height"/>
+                                </constraints>
+                            </button>
+                            
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="main-stack">
+                                <rect key="frame" x="20" y="135" width="353" height="146"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="city-label">
+                                        <rect key="frame" x="159" y="0.0" width="35" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="temp-label">
+                                        <rect key="frame" x="134" y="32" width="85" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="condition-label">
+                                        <rect key="frame" x="139" y="112" width="75" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H:30° L:20°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="high-low-label">
+                                        <rect key="frame" x="134" y="141" width="85" height="5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hourly-collection">
+                                <rect key="frame" x="0.0" y="301" width="393" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="hourly-height"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hourly-layout">
+                                    <size key="itemSize" width="60" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5-DAY FORECAST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="forecast-label">
+                                <rect key="frame" x="20" y="391" width="353" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="daily-table">
+                                <rect key="frame" x="0.0" y="421" width="393" height="397"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feels-like-container">
+                                <rect key="frame" x="0.0" y="752" width="393" height="66"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="feels-like-stack">
+                                        <rect key="frame" x="20" y="12" width="353" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEELS LIKE 25°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feels-like-label">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similar to the actual temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feels-like-description">
+                                                <rect key="frame" x="0.0" y="24" width="353" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="regular" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="feels-like-stack" secondAttribute="trailing" constant="20" id="feels-stack-trailing"/>
+                                    <constraint firstItem="feels-like-stack" firstAttribute="leading" secondItem="feels-like-container" secondAttribute="leading" constant="20" id="feels-stack-leading"/>
+                                    <constraint firstItem="feels-like-stack" firstAttribute="centerY" secondItem="feels-like-container" secondAttribute="centerY" id="feels-stack-center"/>
+                                    <constraint firstAttribute="height" constant="66" id="feels-container-height"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bgI-h7-dXc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bg-leading"/>
+                            <constraint firstAttribute="bottom" secondItem="bgI-h7-dXc" secondAttribute="bottom" id="bg-bottom"/>
+                            <constraint firstItem="bgI-h7-dXc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bg-top"/>
+                            <constraint firstAttribute="trailing" secondItem="bgI-h7-dXc" secondAttribute="trailing" id="bg-trailing"/>
+                            
+                            <constraint firstItem="searchBar" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="search-top"/>
+                            <constraint firstItem="searchBar" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="search-leading"/>
+                            <constraint firstItem="locationButton" firstAttribute="leading" secondItem="searchBar" secondAttribute="trailing" id="search-trailing"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="locationButton" secondAttribute="trailing" constant="20" id="location-trailing"/>
+                            <constraint firstItem="locationButton" firstAttribute="centerY" secondItem="searchBar" secondAttribute="centerY" id="location-center"/>
+                            
+                            <constraint firstItem="main-stack" firstAttribute="top" secondItem="searchBar" secondAttribute="bottom" constant="20" id="stack-top"/>
+                            <constraint firstItem="main-stack" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="stack-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="main-stack" secondAttribute="trailing" constant="20" id="stack-trailing"/>
+                            
+                            <constraint firstItem="hourly-collection" firstAttribute="top" secondItem="main-stack" secondAttribute="bottom" constant="20" id="hourly-top"/>
+                            <constraint firstItem="hourly-collection" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hourly-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hourly-collection" secondAttribute="trailing" id="hourly-trailing"/>
+                            
+                            <constraint firstItem="forecast-label" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="forecast-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="forecast-label" secondAttribute="trailing" constant="20" id="forecast-trailing"/>
+                            <constraint firstItem="forecast-label" firstAttribute="top" secondItem="hourly-collection" secondAttribute="bottom" constant="20" id="forecast-top"/>
+                            
+                            <constraint firstItem="daily-table" firstAttribute="top" secondItem="forecast-label" secondAttribute="bottom" constant="10" id="daily-top"/>
+                            <constraint firstItem="daily-table" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="daily-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="daily-table" secondAttribute="trailing" id="daily-trailing"/>
+                            
+                            <constraint firstItem="feels-like-container" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="feels-leading"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="feels-like-container" secondAttribute="trailing" id="feels-trailing"/>
+                            <constraint firstItem="feels-like-container" firstAttribute="top" secondItem="daily-table" secondAttribute="bottom" id="feels-top"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="feels-like-container" secondAttribute="bottom" constant="20" id="feels-bottom"/>
+                            <constraint firstItem="daily-table" firstAttribute="bottom" secondItem="feels-like-container" secondAttribute="top" id="daily-bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="bgI-h7-dXc" id="bg-outlet"/>
+                        <outlet property="cityLabel" destination="city-label" id="city-outlet"/>
+                        <outlet property="temperatureLabel" destination="temp-label" id="temp-outlet"/>
+                        <outlet property="conditionLabel" destination="condition-label" id="condition-outlet"/>
+                        <outlet property="highLowLabel" destination="high-low-label" id="high-low-outlet"/>
+                        <outlet property="hourlyCollectionView" destination="hourly-collection" id="hourly-outlet"/>
+                        <outlet property="dailyTableView" destination="daily-table" id="daily-outlet"/>
+                        <outlet property="searchBar" destination="searchBar" id="searchBar-outlet"/>
+                        <outlet property="locationButton" destination="locationButton" id="locationButton-outlet"/>
+                        <outlet property="forecastLabel" destination="forecast-label" id="forecast-outlet"/>
+                        <outlet property="feelsLikeLabel" destination="feels-like-label" id="feels-like-outlet"/>
+                        <outlet property="feelsLikeDescription" destination="feels-like-description" id="feels-description-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
